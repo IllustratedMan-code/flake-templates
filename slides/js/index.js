@@ -30,11 +30,17 @@ loadIncludes()
       history: "true",
       pdfSeparateFragments: false,
       plugins: [Markdown, Highlight, Drawer, Pointer, Notes, Math.KaTeX],
+      autoPlayMedia: true,
+      progress: true,
     });
   })
   .then(() => {
     if (/[?&]print-pdf/.test(location.search)) {
-      console.log("shownotes");
+      Reveal.configure({
+        showNotes: true,
+        pdfSeparateFragments: false,
+      });
+    } else if (/[?&]show-notes/.test(location.search)) {
       Reveal.configure({
         showNotes: true,
       });
